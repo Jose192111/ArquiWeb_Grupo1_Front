@@ -1,0 +1,38 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%;">
+    <h2>Actualizar Ejercicio</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      <label>
+        <span>Código</span>
+        <input type="text" formControlName="codigo" readonly>
+      </label>
+
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="nombre">
+      </label>
+
+      <label>
+        <span>Grupo muscular</span>
+        <input type="text" formControlName="grupoMuscular">
+      </label>
+
+      <label>
+        <span>Duración mínima</span>
+        <input type="number" formControlName="duracionMin">
+      </label>
+
+      <label>
+        <span>Valor MET</span>
+        <input type="number" formControlName="metValor" step="0.1">
+      </label>
+
+      <div>
+        <button type="submit">Actualizar</button>
+      </div>
+    </form>
+  </div>
+</div>

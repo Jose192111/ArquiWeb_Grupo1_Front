@@ -1,0 +1,54 @@
+.custom-toolbar {
+  background-color: #fb0800;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  flex-wrap: wrap;
+}
+
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.menu-title {
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.15rem;
+}
+
+.menu-button {
+  background-color: #fb0800;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin: 0;
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.home-link {
+  background-color: #0f172a;
+}
+
+.menu-button:hover {
+  background-color: rgb(106, 235, 157);
+  color: #0f172a;
+}
+
+.container {
+  padding: 0;
+}

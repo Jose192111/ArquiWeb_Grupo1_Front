@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 style="text-align: center; margin: 3%;">Lista de Ejercicios</h2>
+
+  <div style="text-align: center; margin: 3%;">
+    <table class="exercise-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Grupo muscular</th>
+          <th>Duración</th>
+          <th>MET</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ejercicio of ejercicios">
+          <td>{{ ejercicio.id }}</td>
+          <td>{{ ejercicio.nombre }}</td>
+          <td>{{ ejercicio.grupoMuscular }}</td>
+          <td>{{ ejercicio.duracionMin }}</td>
+          <td>{{ ejercicio.metValor }}</td>
+          <td>
+            <button type="button" (click)="eliminar(ejercicio.id)">Eliminar</button>
+          </td>
+          <td>
+            <button type="button" [routerLink]="['/ejercicios/edits', ejercicio.id]">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

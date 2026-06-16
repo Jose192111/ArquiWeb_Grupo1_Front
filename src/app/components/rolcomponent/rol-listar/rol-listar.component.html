@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 style="text-align: center; margin: 3%;">Lista de Roles</h2>
+
+  <div style="text-align: center; margin: 3%;">
+    <table class="entity-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rol of roles">
+          <td>{{ rol.id }}</td>
+          <td>{{ rol.nombre }}</td>
+          <td>
+            <button type="button" (click)="eliminar(rol.id)">Eliminar</button>
+          </td>
+          <td>
+            <button type="button" [routerLink]="['/roles/edits', rol.id]">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

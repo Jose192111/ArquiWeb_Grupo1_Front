@@ -9,12 +9,12 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class EjercicioService {
-  private url = `${base_url}/api-ejercicios`;
+  private url = `${base_url}/ejercicios`;
 
   constructor(private http: HttpClient) { }
 
   list() {
-    return this.http.get<Ejercicio[]>(`${this.url}/lista`);
+    return this.http.get<Ejercicio[]>(`${this.url}`);
   }
 
   insert(ejercicio: Ejercicio) {

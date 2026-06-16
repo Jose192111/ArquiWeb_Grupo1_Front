@@ -1,0 +1,23 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%;">
+    <h2>Registrar Etiqueta</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%;">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="nombre">
+      </label>
+
+      <label>
+        <span>Grupo</span>
+        <input type="text" formControlName="grupo">
+      </label>
+
+      <div>
+        <button type="submit">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
