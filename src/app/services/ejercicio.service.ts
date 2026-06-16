@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment.development';
+import { HttpClient } from '@angular/common/http';
+import { Ejercicio } from '../models/ejercicio.model';
+
+const base_url = environment.base;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class EjercicioService {
+  private url = `${base_url}/api-ejercicios`;
+
+  constructor(private http: HttpClient) { }
+
+  list() {
+    return this.http.get<Ejercicio[]>(`${this.url}/lista`);
+  }
+
+  insert(ejercicio: Ejercicio) {
+    return this.http.post(`${this.url}/nuevo`, ejercicio);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+  }
+
+  listId(id: number) {
+    return this.http.get<Ejercicio>(`${this.url}/${id}`);
+  }
+
+  update(ejercicio: Ejercicio) {
+    return this.http.put(`${this.url}/actualiza`, ejercicio, { responseType: 'text' });
+  }
+}
