@@ -1,33 +1,37 @@
 <div class="container">
-  <div style="text-align: center; margin: 3%;">
+  <div style="text-align: center; margin: 3%">
     <h2>Registrar Ejercicio</h2>
   </div>
 
-  <div style="text-align: center; margin: 3%;">
-    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <label>
-        <span>Nombre</span>
-        <input type="text" formControlName="nombre">
-      </label>
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Ejercicio</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Flexiones de pecho" />
+      </mat-form-field>
 
-      <label>
-        <span>Grupo muscular</span>
-        <input type="text" formControlName="grupoMuscular">
-      </label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Grupo muscular</mat-label>
+        <input matInput formControlName="grupoMuscular" placeholder="Ej. Pectorales" />
+      </mat-form-field>
 
-      <label>
-        <span>Duración mínima</span>
-        <input type="number" formControlName="duracionMin">
-      </label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Duración mínima (minutos)</mat-label>
+        <input matInput type="number" formControlName="duracionMin" placeholder="Ej. 15" />
+      </mat-form-field>
 
-      <label>
-        <span>Valor MET</span>
-        <input type="number" formControlName="metValor" step="0.1">
-      </label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Valor MET</mat-label>
+        <input matInput type="number" formControlName="metValor" step="0.1" placeholder="Ej. 8.0" />
+      </mat-form-field>
 
-      <div>
-        <button type="submit">Registrar</button>
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Ejercicio
+        </button>
       </div>
+
     </form>
   </div>
 </div>

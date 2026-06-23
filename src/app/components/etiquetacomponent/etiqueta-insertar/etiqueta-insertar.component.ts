@@ -5,10 +5,22 @@ import { Router } from '@angular/router';
 import { Etiqueta } from '../../../models/etiqueta.model';
 import { EtiquetaService } from '../../../services/etiqueta.service';
 
+// Importaciones de Angular Material agregadas
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-etiqueta-insertar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  // Modulos de Material añadidos aquí:
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
+  ],
   templateUrl: './etiqueta-insertar.component.html',
   styleUrl: './etiqueta-insertar.component.css',
 })

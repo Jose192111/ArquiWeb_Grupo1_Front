@@ -5,14 +5,6 @@
             <mat-icon>home</mat-icon>Inicio
         </button>
 
-        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuSalas">
-            SALAS <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #menuSalas="matMenu">
-            <button mat-menu-item routerLink="/salas/listas"><mat-icon>list</mat-icon>Lista</button>
-            <button mat-menu-item routerLink="/salas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
-        </mat-menu>
-
         <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuEjercicios">
             EJERCICIOS <mat-icon>arrow_drop_down</mat-icon>
         </button>

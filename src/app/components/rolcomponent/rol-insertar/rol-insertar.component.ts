@@ -5,10 +5,22 @@ import { Router } from '@angular/router';
 import { Rol } from '../../../models/rol.model';
 import { RolService } from '../../../services/rol.service';
 
+// Importaciones de Angular Material agregadas
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-rol-insertar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  // Módulos de Material añadidos aquí:
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
+  ],
   templateUrl: './rol-insertar.component.html',
   styleUrl: './rol-insertar.component.css',
 })

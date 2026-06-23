@@ -1,23 +1,27 @@
 <div class="container">
-  <div style="text-align: center; margin: 3%;">
+  <div style="text-align: center; margin: 3%">
     <h2>Registrar Etiqueta</h2>
   </div>
 
-  <div style="text-align: center; margin: 3%;">
-    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <label>
-        <span>Nombre</span>
-        <input type="text" formControlName="nombre">
-      </label>
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de la Etiqueta</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Principiante" />
+      </mat-form-field>
 
-      <label>
-        <span>Grupo</span>
-        <input type="text" formControlName="grupo">
-      </label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Grupo</mat-label>
+        <input matInput formControlName="grupo" placeholder="Ej. Dificultad" />
+      </mat-form-field>
 
-      <div>
-        <button type="submit">Registrar</button>
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Etiqueta
+        </button>
       </div>
+
     </form>
   </div>
 </div>

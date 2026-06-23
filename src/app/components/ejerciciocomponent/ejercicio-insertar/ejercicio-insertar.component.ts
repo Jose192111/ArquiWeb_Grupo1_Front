@@ -5,10 +5,22 @@ import { Router } from '@angular/router';
 import { Ejercicio } from '../../../models/ejercicio.model';
 import { EjercicioService } from '../../../services/ejercicio.service';
 
+// Importaciones agregadas para Angular Material
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-ejercicio-insertar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  // Agregamos los módulos de Material aquí
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
+  ],
   templateUrl: './ejercicio-insertar.component.html',
   styleUrl: './ejercicio-insertar.component.css',
 })
