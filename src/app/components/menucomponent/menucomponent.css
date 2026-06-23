@@ -1,54 +1,81 @@
+.container {
+  padding: 0;
+}
+
+/* --- Barra Principal --- */
 .custom-toolbar {
   background-color: #fb0800;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem 1rem;
+  padding: 0 1rem;
   flex-wrap: wrap;
+  height: auto; /* Permite que la barra crezca si la pantalla es pequeña */
+  min-height: 64px;
 }
 
-.menu-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.menu-title {
-  color: #ffffff;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-right: 0.15rem;
-}
-
+/* --- Estilo base de los botones --- */
 .menu-button {
-  background-color: #fb0800;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 4px;
-  color: #ffffff;
-  text-decoration: none;
+  color: #ffffff !important;
   font-size: 0.95rem;
   margin: 0;
-  padding: 0.65rem 1rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* --- Botón Inicio Específico --- */
 .home-link {
-  background-color: #0f172a;
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
 }
 
+/* --- Títulos de los desplegables --- */
+.menu-title {
+  background-color: transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Efecto Hover (El verde menta de tu diseño) --- */
 .menu-button:hover {
-  background-color: rgb(106, 235, 157);
-  color: #0f172a;
+  background-color: rgb(106, 235, 157) !important;
+  color: #0f172a !important;
+  border-color: transparent !important;
 }
 
-.container {
-  padding: 0;
+/* Ajuste de los iconos dentro de los botones de la barra */
+.menu-button mat-icon {
+  margin-right: 4px;
+  margin-left: 0;
+}
+
+.menu-title mat-icon {
+  margin-right: 0;
+  margin-left: 4px; /* Icono de flecha hacia abajo a la derecha */
+}
+
+
+/* --- Estilos del Menú Desplegable (Material) --- */
+::ng-deep .mat-mdc-menu-panel {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .mat-mdc-menu-item {
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  color: #0f172a !important;
+}
+
+/* Hover de los items del menú desplegable */
+::ng-deep .mat-mdc-menu-item:hover {
+  background-color: rgba(106, 235, 157, 0.4) !important; 
 }

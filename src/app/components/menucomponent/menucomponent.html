@@ -1,29 +1,41 @@
 <div class="container">
-    <nav class="custom-toolbar">
-        <a class="menu-button home-link" routerLink="/">Inicio</a>
+    <mat-toolbar class="custom-toolbar">
+        
+        <button mat-button class="menu-button home-link" routerLink="/">
+            <mat-icon>home</mat-icon>Inicio
+        </button>
 
-        <div class="menu-group">
-            <span class="menu-title">Salas</span>
-            <a class="menu-button" routerLink="/salas/listas">Lista</a>
-            <a class="menu-button" routerLink="/salas/nuevo">Nuevo</a>
-        </div>
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuSalas">
+            SALAS <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuSalas="matMenu">
+            <button mat-menu-item routerLink="/salas/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/salas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
 
-        <div class="menu-group">
-            <span class="menu-title">Ejercicios</span>
-            <a class="menu-button" routerLink="/ejercicios/listas">Lista</a>
-            <a class="menu-button" routerLink="/ejercicios/nuevo">Nuevo</a>
-        </div>
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuEjercicios">
+            EJERCICIOS <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuEjercicios="matMenu">
+            <button mat-menu-item routerLink="/ejercicios/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/ejercicios/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
 
-        <div class="menu-group">
-            <span class="menu-title">Roles</span>
-            <a class="menu-button" routerLink="/roles/listas">Lista</a>
-            <a class="menu-button" routerLink="/roles/nuevo">Nuevo</a>
-        </div>
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuRoles">
+            ROLES <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuRoles="matMenu">
+            <button mat-menu-item routerLink="/roles/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/roles/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
 
-        <div class="menu-group">
-            <span class="menu-title">Etiquetas</span>
-            <a class="menu-button" routerLink="/etiquetas/listas">Lista</a>
-            <a class="menu-button" routerLink="/etiquetas/nuevo">Nuevo</a>
-        </div>
-    </nav>
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuEtiquetas">
+            ETIQUETAS <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuEtiquetas="matMenu">
+            <button mat-menu-item routerLink="/etiquetas/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/etiquetas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
+
+    </mat-toolbar>
 </div>
