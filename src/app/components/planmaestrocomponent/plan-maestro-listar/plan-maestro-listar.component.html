@@ -1,0 +1,67 @@
+<div class="kh-breadcrumb">App / <span>Planes Maestros</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Planes Maestros</h2>
+    <p>Planes de alimentación y ejercicio del sistema</p>
+  </div>
+  <button class="kh-btn-new" routerLink="/planes/nuevo">+ Nuevo plan</button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ planes.length }}</p>
+    <p class="tag">planes registrados</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar plan..."
+         [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Título</th>
+        <th>Tipo</th>
+        <th>Duración (días)</th>
+        <th>Objetivo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (planesFiltrados().length === 0) {
+        <tr>
+          <td colspan="6">
+            <div class="kh-empty">
+              <p class="ico">📋</p>
+              <p>No hay planes maestros registrados aún.</p>
+            </div>
+          </td>
+        </tr>
+      }
+      @for (p of planesFiltrados(); track p.id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td><strong>{{ p.titulo }}</strong></td>
+          <td><span class="kh-badge {{ badgeClass(p.tipoPlan) }}">{{ p.tipoPlan }}</span></td>
+          <td>{{ p.duracionDias }} días</td>
+          <td>{{ (p.objetivo || '') | slice:0:50 }}{{ (p.objetivo || '').length > 50 ? '...' : '' }}</td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/planes/edits', p.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(p.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <div class="kh-pagination">
+    <span>{{ planesFiltrados().length }} resultado(s)</span>
+  </div>
+</div>

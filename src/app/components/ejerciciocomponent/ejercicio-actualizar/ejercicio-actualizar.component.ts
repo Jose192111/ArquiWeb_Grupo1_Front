@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Ejercicio } from '../../../models/ejercicio.model';
 import { EjercicioService } from '../../../services/ejercicio.service';
@@ -8,7 +8,7 @@ import { EjercicioService } from '../../../services/ejercicio.service';
 @Component({
   selector: 'app-ejercicio-actualizar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './ejercicio-actualizar.component.html',
   styleUrl: './ejercicio-actualizar.component.css',
 })

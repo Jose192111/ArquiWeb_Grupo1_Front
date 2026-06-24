@@ -14,23 +14,15 @@ import { EtiquetaService } from '../../../services/etiqueta.service';
 export class EtiquetaListarComponent implements OnInit {
   etiquetas: Etiqueta[] = [];
 
-  constructor(private etiquetaService: EtiquetaService) { }
+  constructor(private etiquetaService: EtiquetaService) {}
 
-  ngOnInit(): void {
-    this.cargarEtiquetas();
-  }
+  ngOnInit(): void { this.cargarEtiquetas(); }
 
   cargarEtiquetas(): void {
-    this.etiquetaService.list().subscribe({
-      next: (data) => {
-        this.etiquetas = data;
-      },
-    });
+    this.etiquetaService.list().subscribe({ next: (data) => (this.etiquetas = data) });
   }
 
   eliminar(id: number): void {
-    this.etiquetaService.delete(id).subscribe({
-      next: () => this.cargarEtiquetas(),
-    });
+    this.etiquetaService.delete(id).subscribe({ next: () => this.cargarEtiquetas() });
   }
 }

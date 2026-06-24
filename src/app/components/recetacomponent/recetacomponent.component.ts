@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { SidebarComponent } from '../sidebarcomponent/sidebar.component';
 
 @Component({
   selector: 'app-recetacomponent',
-  imports: [RouterModule],
-  templateUrl: './recetacomponent.component.html',
-  styleUrl: './recetacomponent.component.css'
+  standalone: true,
+  imports: [RouterOutlet, SidebarComponent],
+  template: `
+    <div class="app-shell">
+      <app-sidebar></app-sidebar>
+      <div class="shell-main"><router-outlet></router-outlet></div>
+    </div>
+  `,
 })
-export class RecetacomponentComponent {
+export class RecetacomponentComponent {}
 
-}
