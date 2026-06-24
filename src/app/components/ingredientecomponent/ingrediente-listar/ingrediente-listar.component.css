@@ -1,0 +1,10 @@
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exercise-table th,
+.exercise-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+}

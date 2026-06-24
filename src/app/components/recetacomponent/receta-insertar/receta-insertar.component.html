@@ -1,0 +1,57 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%">
+    <h2>Registrar Receta</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de la Receta</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Ensalada César" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="descripcion" placeholder="Ej. Ensalada César con pollo" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ID de Autor</mat-label>
+        <input matInput type="number" formControlName="idAutor" placeholder="Ej. 1" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Tiempo de Preparación (minutos)</mat-label>
+        <input matInput type="number" formControlName="tiempoPreparacion" step="1" placeholder="Ej. 30" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Dificultad</mat-label>
+        <input matInput type="number" formControlName="dificultad" step="0.1" placeholder="Ej. Facil" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Publicado</mat-label>
+        <input matInput type="number" formControlName="publicado" step="0.1" placeholder="Ej. Si" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Ultima Actualizacion</mat-label>
+        <input matInput type="number" formControlName="ultimaActualizacion" step="0.1" placeholder="Ej. 1" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Detalles</mat-label>
+        <input matInput type="number" formControlName="detalles" step="0.1" placeholder="Ej. 1" />
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Receta
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

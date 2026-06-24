@@ -29,5 +29,21 @@
             <button mat-menu-item routerLink="/etiquetas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
         </mat-menu>
 
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuIngredientes">
+            INGREDIENTES <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuIngredientes="matMenu">
+            <button mat-menu-item routerLink="/ingredientes/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/ingredientes/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
+
+        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuRecetas">
+            RECETAS <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuRecetas="matMenu">
+            <button mat-menu-item routerLink="/recetas/listas"><mat-icon>list</mat-icon>Lista</button>
+            <button mat-menu-item routerLink="/recetas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
+        </mat-menu>
+
     </mat-toolbar>
 </div>

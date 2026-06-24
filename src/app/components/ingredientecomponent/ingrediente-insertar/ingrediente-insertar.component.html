@@ -1,0 +1,52 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%">
+    <h2>Registrar Ingrediente</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Ingrediente</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Manzana" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Unidad de Medida</mat-label>
+        <input matInput formControlName="unidadMedida" placeholder="Ej. gramos" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ID de Etiqueta</mat-label>
+        <input matInput type="number" formControlName="idEtiqueta" placeholder="Ej. 1" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Calorías (100g)</mat-label>
+        <input matInput type="number" formControlName="calorias100" step="0.1" placeholder="Ej. 52.0" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Proteínas (100g)</mat-label>
+        <input matInput type="number" formControlName="proteinas100" step="0.1" placeholder="Ej. 8.0" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Carbohidratos (100g)</mat-label>
+        <input matInput type="number" formControlName="carbos100" step="0.1" placeholder="Ej. 13.8" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Grasas (100g)</mat-label>
+        <input matInput type="number" formControlName="grasas100" step="0.1" placeholder="Ej. 0.3" />
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Ingrediente
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

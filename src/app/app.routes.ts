@@ -12,6 +12,14 @@ import { EtiquetaListarComponent } from './components/etiquetacomponent/etiqueta
 import { EtiquetaInsertarComponent } from './components/etiquetacomponent/etiqueta-insertar/etiqueta-insertar.component';
 import { EtiquetaActualizarComponent } from './components/etiquetacomponent/etiqueta-actualizar/etiqueta-actualizar.component';
 import { Homecomponent } from './components/homecomponent/homecomponent';
+import { IngredientecomponentComponent } from './components/ingredientecomponent/ingredientecomponent.component';
+import { IngredienteListarComponent } from './components/ingredientecomponent/ingrediente-listar/ingrediente-listar.component';
+import { IngredienteInsertarComponent } from './components/ingredientecomponent/ingrediente-insertar/ingrediente-insertar.component';
+import { RecetaActualizarComponent } from './components/recetacomponent/receta-actualizar/receta-actualizar.component';
+import { RecetaInsertarComponent } from './components/recetacomponent/receta-insertar/receta-insertar.component';
+import { RecetaListarComponent } from './components/recetacomponent/receta-listar/receta-listar.component';
+import { RecetacomponentComponent } from './components/recetacomponent/recetacomponent.component';
+import { IngredienteActualizarComponent } from './components/ingredientecomponent/ingrediente-actualizar/ingrediente-actualizar.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +53,26 @@ export const routes: Routes = [
       { path: 'listas', component: EtiquetaListarComponent },
       { path: 'nuevo', component: EtiquetaInsertarComponent },
       { path: 'edits/:id', component: EtiquetaActualizarComponent },
+      { path: '', redirectTo: 'listas', pathMatch: 'full' },
+    ],
+  },
+  {
+    path: 'ingredientes',
+    component: IngredientecomponentComponent,
+    children: [
+      { path: 'listas', component: IngredienteListarComponent },
+      { path: 'nuevo', component: IngredienteInsertarComponent },
+      { path: 'edits/:id', component: IngredienteActualizarComponent },
+      { path: '', redirectTo: 'listas', pathMatch: 'full' },
+    ],
+  },
+  {
+    path: 'recetas',
+    component: RecetacomponentComponent,
+    children: [
+      { path: 'listas', component: RecetaListarComponent },
+      { path: 'nuevo', component: RecetaInsertarComponent },
+      { path: 'edits/:id', component: RecetaActualizarComponent },
       { path: '', redirectTo: 'listas', pathMatch: 'full' },
     ],
   },

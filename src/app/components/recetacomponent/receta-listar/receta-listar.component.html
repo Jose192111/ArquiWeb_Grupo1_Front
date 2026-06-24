@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 style="text-align: center; margin: 3%;">Lista de Recetas</h2>
+
+  <div style="text-align: center; margin: 3%;">
+    <table class="exercise-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Unidad de Medida</th>
+          <th>ID Autor</th>
+          <th>Tiempo de Preparación (minutos)</th>
+          <th>Dificultad</th>
+          <th>Publicada</th>
+          <th>Última Actualización</th>
+          <th>Detalles</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let receta of recetas">
+          <td>{{ receta.id }}</td>
+          <td>{{ receta.title }}</td>
+          <td>{{ receta.description }}</td>
+          <td>{{ receta.idAutor }}</td>
+          <td>{{ receta.prepTimeMinutes }}</td>
+          <td>{{ receta.difficulty }}</td>
+          <td>{{ receta.published }}</td>
+          <td>{{ receta.ultimaActualizacion }}</td>
+          <td>{{ receta.detalles }}</td>
+          <td>
+            <button type="button" (click)="eliminar(receta.id)">Eliminar</button>
+          </td>
+          <td>
+            <button type="button" [routerLink]="['/recetas/edits', receta.id]">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

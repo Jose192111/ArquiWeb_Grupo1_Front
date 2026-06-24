@@ -1,0 +1,40 @@
+<div class="container">
+  <h2 style="text-align: center; margin: 3%;">Lista de Ingredientes</h2>
+
+  <div style="text-align: center; margin: 3%;">
+    <table class="exercise-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Unidad de Medida</th>
+          <th>ID Etiqueta</th>
+          <th>Calorías (100g)</th>
+          <th>Proteínas (100g)</th>
+          <th>Carbohidratos (100g)</th>
+          <th>Grasas (100g)</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ingrediente of ingredientes">
+          <td>{{ ingrediente.id }}</td>
+          <td>{{ ingrediente.nombre }}</td>
+          <td>{{ ingrediente.unidadMedida }}</td>
+          <td>{{ ingrediente.idEtiqueta }}</td>
+          <td>{{ ingrediente.calorias100 }}</td>
+          <td>{{ ingrediente.proteinas100 }}</td>
+          <td>{{ ingrediente.carbos100 }}</td>
+          <td>{{ ingrediente.grasas100 }}</td>
+          <td>
+            <button type="button" (click)="eliminar(ingrediente.id)">Eliminar</button>
+          </td>
+          <td>
+            <button type="button" [routerLink]="['/ingredientes/edits', ingrediente.id]">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
