@@ -1,33 +1,76 @@
-<div class="container">
-    <mat-toolbar class="custom-toolbar">
-        
-        <button mat-button class="menu-button home-link" routerLink="/">
-            <mat-icon>home</mat-icon>Inicio
-        </button>
+<nav class="kh-nav">
+  <div class="kh-nav-inner">
 
-        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuEjercicios">
-            EJERCICIOS <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #menuEjercicios="matMenu">
-            <button mat-menu-item routerLink="/ejercicios/listas"><mat-icon>list</mat-icon>Lista</button>
-            <button mat-menu-item routerLink="/ejercicios/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
-        </mat-menu>
+    <!-- Logo -->
+    <a class="kh-nav-brand" routerLink="/">
+      <span class="kh-nav-leaf">🥗</span>
+      <span class="kh-nav-name">Kitchen Hack</span>
+    </a>
 
-        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuRoles">
-            ROLES <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #menuRoles="matMenu">
-            <button mat-menu-item routerLink="/roles/listas"><mat-icon>list</mat-icon>Lista</button>
-            <button mat-menu-item routerLink="/roles/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
-        </mat-menu>
+    <!-- Links -->
+    <div class="kh-nav-links">
+      <a class="kh-nav-btn" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Inicio
+      </a>
 
-        <button mat-button class="menu-button menu-title" [matMenuTriggerFor]="menuEtiquetas">
-            ETIQUETAS <mat-icon>arrow_drop_down</mat-icon>
+      <!-- App dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger" (click)="toggleApp()">
+          App <span class="kh-caret">▾</span>
         </button>
-        <mat-menu #menuEtiquetas="matMenu">
-            <button mat-menu-item routerLink="/etiquetas/listas"><mat-icon>list</mat-icon>Lista</button>
-            <button mat-menu-item routerLink="/etiquetas/nuevo"><mat-icon>add</mat-icon>Nuevo</button>
-        </mat-menu>
+        @if (menuAppOpen) {
+          <div class="kh-drop-menu">
+            <a class="kh-drop-item" routerLink="/ejercicios/listas" (click)="cerrar()">
+              💪 Ejercicios
+            </a>
+            <a class="kh-drop-item" routerLink="/planes/listas" (click)="cerrar()">
+              📋 Planes Maestros
+            </a>
+            <div class="kh-drop-divider"></div>
+            <a class="kh-drop-item" routerLink="/etiquetas/listas" (click)="cerrar()">
+              🏷️ Etiquetas
+            </a>
+            <a class="kh-drop-item" routerLink="/roles/listas" (click)="cerrar()">
+              🎭 Roles
+            </a>
+          </div>
+        }
+      </div>
 
-    </mat-toolbar>
-</div>
+      <!-- Cuenta dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger kh-cuenta-btn" (click)="toggleCuenta()">
+          @if (authService.isLoggedIn()) {
+            <span class="kh-avatar">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+            {{ authService.getUsername() }}
+          } @else {
+            👤 Cuenta
+          }
+          <span class="kh-caret">▾</span>
+        </button>
+        @if (menuCuentaOpen) {
+          <div class="kh-drop-menu kh-drop-right">
+            @if (!authService.isLoggedIn()) {
+              <a class="kh-drop-item" routerLink="/login" (click)="cerrar()">
+                🔑 Iniciar sesión
+              </a>
+              <a class="kh-drop-item" routerLink="/registro" (click)="cerrar()">
+                ✨ Registrarse
+              </a>
+            } @else {
+              <div class="kh-drop-user">
+                <span class="kh-avatar lg">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+                <span class="kh-drop-username">{{ authService.getUsername() }}</span>
+              </div>
+              <div class="kh-drop-divider"></div>
+              <button class="kh-drop-item kh-drop-logout" (click)="cerrarSesion()">
+                🚪 Cerrar sesión
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</nav>
