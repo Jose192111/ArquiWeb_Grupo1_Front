@@ -1,4 +1,227 @@
-/* You can add global styles to this file, and also import other style files */
+/* ══════════════════════════════════════
+   KITCHEN HACK — Global Design System
+══════════════════════════════════════ */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f8fafb; }
+
+:root {
+  --kh-900:     #1b4332;
+  --kh-700:     #2d6a4f;
+  --kh-500:     #52b788;
+  --kh-200:     #d8f3dc;
+  --kh-100:     #f0fdf4;
+  --kh-gray-50: #f8fafb;
+  --kh-gray-100:#f1f5f2;
+  --kh-gray-300:#cbd5ce;
+  --kh-gray-500:#6b7f72;
+  --kh-red:     #ef4444;
+  --kh-shadow-sm: 0 1px 3px rgba(27,67,50,.10);
+  --kh-shadow-md: 0 4px 16px rgba(27,67,50,.12);
+  --kh-radius:  10px;
+}
+
+/* ── App shell (sidebar + contenido) ── */
+.app-shell {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  background: var(--kh-gray-50);
+}
+
+.shell-main {
+  flex: 1;
+  padding: 1.75rem;
+  overflow: auto;
+  min-width: 0;
+}
+
+/* ── Breadcrumb ── */
+.kh-breadcrumb {
+  font-size: .82rem;
+  color: var(--kh-gray-500);
+  margin-bottom: 1.25rem;
+}
+.kh-breadcrumb span { color: var(--kh-900); font-weight: 600; }
+
+/* ── Page header ── */
+.kh-page-head {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 1rem;
+  flex-wrap: wrap; margin-bottom: 1.5rem;
+}
+.kh-page-head h2 { font-size: 1.4rem; font-weight: 800; color: var(--kh-900); margin: 0 0 .15rem; }
+.kh-page-head p  { font-size: .85rem; color: var(--kh-gray-500); margin: 0; }
+
+/* ── Buttons ── */
+.kh-btn-new {
+  background: var(--kh-900); color: #fff;
+  border: none; border-radius: 8px;
+  padding: .6rem 1.1rem; font-size: .88rem;
+  font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; gap: .4rem;
+  white-space: nowrap; transition: background .2s;
+}
+.kh-btn-new:hover { background: var(--kh-700); }
+
+.kh-btn-save {
+  background: var(--kh-900); color: #fff;
+  border: none; border-radius: 8px;
+  padding: .65rem 1.5rem; font-size: .9rem;
+  font-weight: 700; cursor: pointer; transition: background .2s;
+}
+.kh-btn-save:hover { background: var(--kh-700); }
+.kh-btn-save:disabled { background: var(--kh-gray-300); cursor: not-allowed; }
+
+.kh-btn-cancel {
+  background: #fff; color: var(--kh-700);
+  border: 1.5px solid var(--kh-gray-300);
+  border-radius: 8px; padding: .65rem 1.2rem;
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  transition: border-color .2s;
+}
+.kh-btn-cancel:hover { border-color: var(--kh-500); }
+
+.kh-btn-edit {
+  background: var(--kh-100); color: var(--kh-700);
+  border: 1px solid var(--kh-200); border-radius: 6px;
+  padding: .28rem .65rem; font-size: .8rem;
+  cursor: pointer; transition: background .15s;
+}
+.kh-btn-edit:hover { background: var(--kh-200); }
+
+.kh-btn-del {
+  background: #fef2f2; color: var(--kh-red);
+  border: 1px solid #fecaca; border-radius: 6px;
+  padding: .28rem .65rem; font-size: .8rem;
+  cursor: pointer; transition: background .15s;
+}
+.kh-btn-del:hover { background: #fee2e2; }
+
+/* ── Stats row ── */
+.kh-stats { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.kh-stat {
+  background: #fff; border-radius: var(--kh-radius);
+  padding: .9rem 1.25rem; border: 1px solid var(--kh-gray-300);
+  box-shadow: var(--kh-shadow-sm); flex: 1; min-width: 110px;
+}
+.kh-stat .label { font-size: .75rem; color: var(--kh-gray-500); margin: 0 0 .15rem; }
+.kh-stat .value { font-size: 1.6rem; font-weight: 800; color: var(--kh-900); line-height: 1; }
+.kh-stat .tag   { font-size: .72rem; color: var(--kh-500); font-weight: 600; margin-top: .2rem; }
+
+/* ── Search bar ── */
+.kh-search {
+  display: flex; gap: .75rem;
+  margin-bottom: 1.25rem; align-items: center;
+}
+.kh-search-input {
+  flex: 1; border: 1.5px solid var(--kh-gray-300);
+  border-radius: 8px; padding: .55rem .9rem;
+  font-size: .88rem; background: #fff; color: var(--kh-900);
+  outline: none;
+}
+.kh-search-input:focus { border-color: var(--kh-500); }
+
+/* ── Table card ── */
+.kh-table-card {
+  background: #fff; border-radius: var(--kh-radius);
+  border: 1px solid var(--kh-gray-300);
+  box-shadow: var(--kh-shadow-sm); overflow: hidden;
+}
+.kh-table-card table { width: 100%; border-collapse: collapse; }
+.kh-table-card thead { background: var(--kh-100); }
+.kh-table-card th {
+  text-align: left; padding: .75rem 1rem;
+  font-size: .78rem; font-weight: 700; color: var(--kh-700);
+  letter-spacing: .04em; text-transform: uppercase;
+  border-bottom: 1px solid var(--kh-200);
+}
+.kh-table-card td {
+  padding: .78rem 1rem; font-size: .88rem;
+  border-bottom: 1px solid var(--kh-gray-100); color: var(--kh-900);
+}
+.kh-table-card tr:last-child td { border-bottom: none; }
+.kh-table-card tbody tr:hover td { background: var(--kh-100); }
+
+.kh-actions { display: flex; gap: .4rem; }
+
+/* ── Badges ── */
+.kh-badge {
+  display: inline-block; padding: .18rem .6rem;
+  border-radius: 20px; font-size: .75rem; font-weight: 600;
+}
+.kh-badge-green  { background: var(--kh-200); color: var(--kh-700); }
+.kh-badge-purple { background: #ede9fe; color: #6d28d9; }
+.kh-badge-yellow { background: #fef9c3; color: #854d0e; }
+.kh-badge-blue   { background: #e0f2fe; color: #0369a1; }
+.kh-badge-pink   { background: #fce7f3; color: #be185d; }
+
+/* ── Pagination ── */
+.kh-pagination {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--kh-gray-100);
+  font-size: .82rem; color: var(--kh-gray-500);
+}
+.kh-page-btns { display: flex; gap: .3rem; }
+.kh-page-btn {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: 1px solid var(--kh-gray-300);
+  background: #fff; font-size: .8rem;
+  cursor: pointer; color: var(--kh-700);
+}
+.kh-page-btn.cur { background: var(--kh-900); color: #fff; border-color: var(--kh-900); }
+
+/* ── Form card ── */
+.kh-form-card {
+  background: #fff; border-radius: var(--kh-radius);
+  border: 1px solid var(--kh-gray-300);
+  box-shadow: var(--kh-shadow-sm); padding: 1.75rem;
+}
+.kh-form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.kh-form-grid.one-col { grid-template-columns: 1fr; }
+.kh-form-field { display: flex; flex-direction: column; gap: .35rem; }
+.kh-form-field.full { grid-column: 1 / -1; }
+.kh-form-field label { font-size: .8rem; font-weight: 600; color: var(--kh-700); }
+.kh-form-field label .req { color: var(--kh-red); }
+.kh-input {
+  border: 1.5px solid var(--kh-gray-300); border-radius: 8px;
+  padding: .65rem .85rem; font-size: .9rem;
+  color: var(--kh-900); background: var(--kh-gray-50);
+  outline: none; transition: border-color .2s;
+  font-family: inherit;
+}
+.kh-input:focus { border-color: var(--kh-500); background: #fff; }
+.kh-input.readonly { background: var(--kh-gray-100); color: var(--kh-gray-500); cursor: not-allowed; }
+.kh-hint { font-size: .75rem; color: var(--kh-gray-500); }
+.kh-form-actions {
+  display: flex; gap: .75rem;
+  margin-top: 1.5rem; justify-content: flex-end;
+}
+
+/* ── Alerts ── */
+.kh-alert-ok {
+  background: var(--kh-100); border: 1px solid var(--kh-200);
+  border-radius: 8px; padding: .65rem 1rem;
+  font-size: .85rem; color: var(--kh-700);
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1rem;
+}
+.kh-alert-err {
+  background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 8px; padding: .65rem 1rem;
+  font-size: .85rem; color: var(--kh-red);
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Empty state ── */
+.kh-empty {
+  text-align: center; padding: 3rem 1rem;
+  color: var(--kh-gray-500);
+}
+.kh-empty .ico { font-size: 3rem; margin-bottom: .5rem; }
+.kh-empty p { font-size: .9rem; }
