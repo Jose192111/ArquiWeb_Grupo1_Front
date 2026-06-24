@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 style="text-align: center; margin: 3%;">Lista de Etiquetas</h2>
+
+  <div style="text-align: center; margin: 3%;">
+    <table class="entity-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Grupo</th>
+          <th>Eliminar</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let etiqueta of etiquetas">
+          <td>{{ etiqueta.id }}</td>
+          <td>{{ etiqueta.nombre }}</td>
+          <td>{{ etiqueta.grupo }}</td>
+          <td>
+            <button type="button" (click)="eliminar(etiqueta.id)">Eliminar</button>
+          </td>
+          <td>
+            <button type="button" [routerLink]="['/etiquetas/edits', etiqueta.id]">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

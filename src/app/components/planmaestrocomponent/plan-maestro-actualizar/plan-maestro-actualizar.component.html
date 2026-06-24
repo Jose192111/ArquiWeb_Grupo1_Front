@@ -1,0 +1,64 @@
+<div class="kh-breadcrumb">App / <a routerLink="/planes/listas">Planes Maestros</a> / <span>Editar</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Editar Plan Maestro</h2>
+    <p>Modifica los datos del plan seleccionado</p>
+  </div>
+</div>
+
+@if (error) {
+  <div class="kh-alert-err">⚠️ {{ error }}</div>
+}
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+
+      <div class="kh-form-field">
+        <label>ID</label>
+        <input class="kh-input readonly" formControlName="codigo" readonly />
+      </div>
+
+      <div class="kh-form-field">
+        <label>ID del autor <span class="req">*</span></label>
+        <input class="kh-input" type="number" formControlName="idAutor" min="1" />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Título del plan <span class="req">*</span></label>
+        <input class="kh-input" formControlName="titulo"
+               placeholder="Ej. Plan Detox 7 días" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Tipo de plan <span class="req">*</span></label>
+        <select class="kh-input" formControlName="tipoPlan">
+          <option value="alimenticio">Alimenticio</option>
+          <option value="ejercicio">Ejercicio</option>
+          <option value="hibrido">Híbrido</option>
+        </select>
+      </div>
+
+      <div class="kh-form-field">
+        <label>Duración (días) <span class="req">*</span></label>
+        <input class="kh-input" type="number" formControlName="duracionDias" min="1" />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Objetivo</label>
+        <textarea class="kh-input" formControlName="objetivo" rows="3"></textarea>
+      </div>
+
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/planes/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Actualizar plan
+      </button>
+    </div>
+  </div>
+</form>

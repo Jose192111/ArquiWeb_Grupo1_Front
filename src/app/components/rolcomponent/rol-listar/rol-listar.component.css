@@ -1,0 +1,10 @@
+.entity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.entity-table th,
+.entity-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+}

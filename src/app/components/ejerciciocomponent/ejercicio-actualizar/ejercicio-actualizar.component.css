@@ -1,0 +1,7 @@
+/* Estilos vienen de styles.css global */
+.example-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%">
+    <h2>Registrar Etiqueta</h2>
+  </div>
+
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de la Etiqueta</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Principiante" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Grupo</mat-label>
+        <input matInput formControlName="grupo" placeholder="Ej. Dificultad" />
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Etiqueta
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

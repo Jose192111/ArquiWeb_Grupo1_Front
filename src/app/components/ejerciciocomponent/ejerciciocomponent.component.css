@@ -1,0 +1,162 @@
+/* Shell layout viene de styles.css global */
+.exercise-page {
+	display: grid;
+	gap: 1.5rem;
+	padding: 1.5rem;
+}
+
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	gap: 1rem;
+}
+
+.eyebrow {
+	margin: 0 0 0.25rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.75rem;
+	color: #6b7280;
+}
+
+.page-header h1,
+.panel h2 {
+	margin: 0;
+}
+
+.subtitle {
+	margin: 0.5rem 0 0;
+	color: #6b7280;
+}
+
+.grid-layout {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr;
+	gap: 1.25rem;
+}
+
+.panel {
+	background: #ffffff;
+	border: 1px solid #e5e7eb;
+	border-radius: 16px;
+	padding: 1rem;
+	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.panel-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.table-wrapper {
+	overflow-x: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 0.8rem 0.7rem;
+	border-bottom: 1px solid #e5e7eb;
+	text-align: left;
+}
+
+th {
+	font-size: 0.85rem;
+	color: #6b7280;
+	font-weight: 600;
+}
+
+.actions {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.exercise-form {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.exercise-form label {
+	display: grid;
+	gap: 0.35rem;
+	font-size: 0.95rem;
+}
+
+.exercise-form input {
+	border: 1px solid #cbd5e1;
+	border-radius: 10px;
+	padding: 0.8rem 0.9rem;
+	font: inherit;
+}
+
+.form-actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	margin-top: 0.25rem;
+}
+
+.primary-button,
+.secondary-button,
+.link-button,
+.danger-button {
+	border: 0;
+	border-radius: 10px;
+	padding: 0.7rem 1rem;
+	font: inherit;
+	cursor: pointer;
+}
+
+.primary-button {
+	background: #0f766e;
+	color: white;
+}
+
+.secondary-button {
+	background: #e2e8f0;
+	color: #0f172a;
+}
+
+.link-button {
+	background: #dbeafe;
+	color: #1d4ed8;
+}
+
+.danger-button {
+	background: #fee2e2;
+	color: #b91c1c;
+}
+
+.message {
+	margin: 0;
+	padding: 0.85rem 1rem;
+	border-radius: 12px;
+	background: #ecfeff;
+	color: #155e75;
+}
+
+.empty-state {
+	padding: 1.5rem;
+	text-align: center;
+	color: #6b7280;
+	border: 1px dashed #cbd5e1;
+	border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+	.grid-layout,
+	.page-header {
+		grid-template-columns: 1fr;
+		flex-direction: column;
+		align-items: stretch;
+	}
+}

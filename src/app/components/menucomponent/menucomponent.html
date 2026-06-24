@@ -1,0 +1,76 @@
+<nav class="kh-nav">
+  <div class="kh-nav-inner">
+
+    <!-- Logo -->
+    <a class="kh-nav-brand" routerLink="/">
+      <span class="kh-nav-leaf">🥗</span>
+      <span class="kh-nav-name">Kitchen Hack</span>
+    </a>
+
+    <!-- Links -->
+    <div class="kh-nav-links">
+      <a class="kh-nav-btn" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Inicio
+      </a>
+
+      <!-- App dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger" (click)="toggleApp()">
+          App <span class="kh-caret">▾</span>
+        </button>
+        @if (menuAppOpen) {
+          <div class="kh-drop-menu">
+            <a class="kh-drop-item" routerLink="/ejercicios/listas" (click)="cerrar()">
+              💪 Ejercicios
+            </a>
+            <a class="kh-drop-item" routerLink="/planes/listas" (click)="cerrar()">
+              📋 Planes Maestros
+            </a>
+            <div class="kh-drop-divider"></div>
+            <a class="kh-drop-item" routerLink="/etiquetas/listas" (click)="cerrar()">
+              🏷️ Etiquetas
+            </a>
+            <a class="kh-drop-item" routerLink="/roles/listas" (click)="cerrar()">
+              🎭 Roles
+            </a>
+          </div>
+        }
+      </div>
+
+      <!-- Cuenta dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger kh-cuenta-btn" (click)="toggleCuenta()">
+          @if (authService.isLoggedIn()) {
+            <span class="kh-avatar">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+            {{ authService.getUsername() }}
+          } @else {
+            👤 Cuenta
+          }
+          <span class="kh-caret">▾</span>
+        </button>
+        @if (menuCuentaOpen) {
+          <div class="kh-drop-menu kh-drop-right">
+            @if (!authService.isLoggedIn()) {
+              <a class="kh-drop-item" routerLink="/login" (click)="cerrar()">
+                🔑 Iniciar sesión
+              </a>
+              <a class="kh-drop-item" routerLink="/registro" (click)="cerrar()">
+                ✨ Registrarse
+              </a>
+            } @else {
+              <div class="kh-drop-user">
+                <span class="kh-avatar lg">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+                <span class="kh-drop-username">{{ authService.getUsername() }}</span>
+              </div>
+              <div class="kh-drop-divider"></div>
+              <button class="kh-drop-item kh-drop-logout" (click)="cerrarSesion()">
+                🚪 Cerrar sesión
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</nav>
