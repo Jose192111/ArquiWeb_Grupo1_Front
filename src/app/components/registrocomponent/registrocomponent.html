@@ -1,0 +1,76 @@
+<div class="kh-auth-page">
+  <div class="kh-auth-card kh-auth-card-wide">
+
+    <div class="kh-auth-head">
+      <span class="kh-auth-logo">🥗</span>
+      <h1>Crear cuenta</h1>
+      <p>Únete a Kitchen Hack y empieza hoy.</p>
+    </div>
+
+    @if (errorMensaje) {
+      <div class="kh-alert-err">{{ errorMensaje }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="kh-reg-grid">
+
+      <div class="kh-form-field">
+        <label class="kh-label" for="nombre">Nombre</label>
+        <input id="nombre" class="kh-input" type="text"
+               formControlName="nombre" placeholder="Tu nombre" />
+        @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+          <span class="kh-hint kh-hint-err">El nombre es requerido.</span>
+        }
+      </div>
+
+      <div class="kh-form-field">
+        <label class="kh-label" for="apellido">Apellido</label>
+        <input id="apellido" class="kh-input" type="text"
+               formControlName="apellido" placeholder="Tu apellido" />
+        @if (form.get('apellido')?.invalid && form.get('apellido')?.touched) {
+          <span class="kh-hint kh-hint-err">El apellido es requerido.</span>
+        }
+      </div>
+
+      <div class="kh-form-field kh-span2">
+        <label class="kh-label" for="username">Usuario</label>
+        <input id="username" class="kh-input" type="text"
+               formControlName="username" placeholder="Nombre de usuario único" />
+        @if (form.get('username')?.invalid && form.get('username')?.touched) {
+          <span class="kh-hint kh-hint-err">El usuario es requerido.</span>
+        }
+      </div>
+
+      <div class="kh-form-field kh-span2">
+        <label class="kh-label" for="email">Correo electrónico</label>
+        <input id="email" class="kh-input" type="email"
+               formControlName="email" placeholder="tu@correo.com" />
+        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+          <span class="kh-hint kh-hint-err">Correo válido requerido.</span>
+        }
+      </div>
+
+      <div class="kh-form-field kh-span2">
+        <label class="kh-label" for="contrasena">Contraseña</label>
+        <div class="kh-input-wrap">
+          <input id="contrasena" class="kh-input" [type]="ocultarPassword ? 'password' : 'text'"
+                 formControlName="contrasenaHash" placeholder="Mínimo 6 caracteres" />
+          <button type="button" class="kh-eye-btn" (click)="ocultarPassword = !ocultarPassword">
+            {{ ocultarPassword ? '👁' : '🙈' }}
+          </button>
+        </div>
+        @if (form.get('contrasenaHash')?.invalid && form.get('contrasenaHash')?.touched) {
+          <span class="kh-hint kh-hint-err">Mínimo 6 caracteres.</span>
+        }
+      </div>
+
+      <button type="submit" class="kh-btn-auth kh-span2" [disabled]="form.invalid">
+        Crear cuenta
+      </button>
+    </form>
+
+    <p class="kh-auth-footer">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login" class="kh-auth-link">Inicia sesión</a>
+    </p>
+  </div>
+</div>
