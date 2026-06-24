@@ -1,9 +1,7 @@
-import { Usuario } from './usuario.model';
-
 export interface PlanMaestro {
   id: number;
   titulo: string;
-  idAutor: Usuario;
+  idAutor: number;
   tipoPlan: string;
   duracionDias: number;
   objetivo: string;

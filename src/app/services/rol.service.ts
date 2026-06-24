@@ -9,12 +9,12 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class RolService {
-  private url = `${base_url}/api-roles`;
+  private url = `${base_url}/roles`;
 
   constructor(private http: HttpClient) { }
 
   list() {
-    return this.http.get<Rol[]>(`${this.url}/lista`);
+    return this.http.get<Rol[]>(`${this.url}`);
   }
 
   insert(rol: Rol) {
@@ -22,14 +22,14 @@ export class RolService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.url}/eliminar/${id}`, { responseType: 'text' });
   }
 
   listId(id: number) {
-    return this.http.get<Rol>(`${this.url}/${id}`);
+    return this.http.get<Rol>(`${this.url}/detalle/${id}`);
   }
 
   update(rol: Rol) {
-    return this.http.put(`${this.url}/actualiza`, rol, { responseType: 'text' });
+    return this.http.put(`${this.url}/actualizar/${rol.id}`, rol, { responseType: 'text' });
   }
 }

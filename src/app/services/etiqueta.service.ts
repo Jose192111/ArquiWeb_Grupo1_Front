@@ -9,12 +9,12 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class EtiquetaService {
-  private url = `${base_url}/api-etiquetas`;
+  private url = `${base_url}/etiquetas`;
 
   constructor(private http: HttpClient) { }
 
   list() {
-    return this.http.get<Etiqueta[]>(`${this.url}/lista`);
+    return this.http.get<Etiqueta[]>(`${this.url}`);
   }
 
   insert(etiqueta: Etiqueta) {
@@ -22,14 +22,14 @@ export class EtiquetaService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.url}/eliminar/${id}`, { responseType: 'text' });
   }
 
   listId(id: number) {
-    return this.http.get<Etiqueta>(`${this.url}/${id}`);
+    return this.http.get<Etiqueta>(`${this.url}/detalle/${id}`);
   }
 
   update(etiqueta: Etiqueta) {
-    return this.http.put(`${this.url}/actualiza`, etiqueta, { responseType: 'text' });
+    return this.http.put(`${this.url}/actualizar/${etiqueta.id}`, etiqueta, { responseType: 'text' });
   }
 }
