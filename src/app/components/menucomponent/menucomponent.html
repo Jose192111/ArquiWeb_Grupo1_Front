@@ -1,29 +1,82 @@
-<div class="container">
-    <nav class="custom-toolbar">
-        <a class="menu-button home-link" routerLink="/">Inicio</a>
+<nav class="kh-nav">
+  <div class="kh-nav-inner">
 
-        <div class="menu-group">
-            <span class="menu-title">Salas</span>
-            <a class="menu-button" routerLink="/salas/listas">Lista</a>
-            <a class="menu-button" routerLink="/salas/nuevo">Nuevo</a>
-        </div>
+    <!-- Logo -->
+    <a class="kh-nav-brand" routerLink="/">
+      <span class="kh-nav-leaf">🥗</span>
+      <span class="kh-nav-name">Kitchen Hack</span>
+    </a>
 
-        <div class="menu-group">
-            <span class="menu-title">Ejercicios</span>
-            <a class="menu-button" routerLink="/ejercicios/listas">Lista</a>
-            <a class="menu-button" routerLink="/ejercicios/nuevo">Nuevo</a>
-        </div>
+    <!-- Links -->
+    <div class="kh-nav-links">
+      <a class="kh-nav-btn" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Inicio
+      </a>
 
-        <div class="menu-group">
-            <span class="menu-title">Roles</span>
-            <a class="menu-button" routerLink="/roles/listas">Lista</a>
-            <a class="menu-button" routerLink="/roles/nuevo">Nuevo</a>
-        </div>
+      <!-- App dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger" (click)="toggleApp()">
+          App <span class="kh-caret">▾</span>
+        </button>
+        @if (menuAppOpen) {
+          <div class="kh-drop-menu">
+            <a class="kh-drop-item" routerLink="/ejercicios/listas" (click)="cerrar()">
+              💪 Ejercicios
+            </a>
+            <a class="kh-drop-item" routerLink="/planes/listas" (click)="cerrar()">
+              📋 Planes Maestros
+            </a>
+            <div class="kh-drop-divider"></div>
+            <a class="kh-drop-item" routerLink="/etiquetas/listas" (click)="cerrar()">
+              🏷️ Etiquetas
+            </a>
+            <a class="kh-drop-item" routerLink="/roles/listas" (click)="cerrar()">
+              🎭 Roles
+            </a>
+            <div class="kh-drop-divider"></div>
+            <a class="kh-drop-item" routerLink="/ingredientes/listas" (click)="cerrar()">
+              🧂 Ingredientes
+            </a>
+            <a class="kh-drop-item" routerLink="/recetas/listas" (click)="cerrar()">
+              🍽️ Recetas
+            </a>
+          </div>
+        }
+      </div>
+      <!-- Cuenta dropdown -->
+      <div class="kh-dropdown">
+        <button class="kh-nav-btn kh-drop-trigger kh-cuenta-btn" (click)="toggleCuenta()">
+          @if (authService.isLoggedIn()) {
+            <span class="kh-avatar">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+            {{ authService.getUsername() }}
+          } @else {
+            👤 Cuenta
+          }
+          <span class="kh-caret">▾</span>
+        </button>
+        @if (menuCuentaOpen) {
+          <div class="kh-drop-menu kh-drop-right">
+            @if (!authService.isLoggedIn()) {
+              <a class="kh-drop-item" routerLink="/login" (click)="cerrar()">
+                🔑 Iniciar sesión
+              </a>
+              <a class="kh-drop-item" routerLink="/registro" (click)="cerrar()">
+                ✨ Registrarse
+              </a>
+            } @else {
+              <div class="kh-drop-user">
+                <span class="kh-avatar lg">{{ (authService.getUsername() || 'U')[0].toUpperCase() }}</span>
+                <span class="kh-drop-username">{{ authService.getUsername() }}</span>
+              </div>
+              <div class="kh-drop-divider"></div>
+              <button class="kh-drop-item kh-drop-logout" (click)="cerrarSesion()">
+                🚪 Cerrar sesión
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
 
-        <div class="menu-group">
-            <span class="menu-title">Etiquetas</span>
-            <a class="menu-button" routerLink="/etiquetas/listas">Lista</a>
-            <a class="menu-button" routerLink="/etiquetas/nuevo">Nuevo</a>
-        </div>
-    </nav>
-</div>
+  </div>
+</nav>

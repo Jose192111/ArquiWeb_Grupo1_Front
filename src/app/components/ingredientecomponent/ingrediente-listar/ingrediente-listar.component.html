@@ -1,0 +1,71 @@
+<div class="kh-breadcrumb">App / <span>Ingredientes</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Ingredientes</h2>
+    <p>Catálogo de ingredientes y sus valores nutricionales</p>
+  </div>
+  <button class="kh-btn-new" [routerLink]="['/ingredientes/nuevo']">
+    + Nuevo ingrediente
+  </button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ ingredientes.length }}</p>
+    <p class="tag">ingredientes registrados</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar ingrediente..." [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Unidad</th>
+        <th>Etiqueta</th>
+        <th>Calorías</th>
+        <th>Carbos</th>
+        <th>Grasas</th>
+        <th>Proteínas</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (ingredientesFiltrados().length === 0) {
+        <tr>
+          <td colspan="9">
+            <div class="kh-empty">
+              <p class="ico">🥑</p>
+              <p>No hay ingredientes registrados o que coincidan con la búsqueda.</p>
+            </div>
+          </td>
+        </tr>
+      }
+      @for (i of ingredientesFiltrados(); track i.id) {
+        <tr>
+          <td>{{ i.id }}</td>
+          <td><strong>{{ i.nombre }}</strong></td>
+          <td><span class="kh-badge kh-badge-green">{{ i.unidadMedida }}</span></td>
+          <td><span class="kh-badge">{{ i.idEtiqueta?.nombre || 'N/A' }}</span></td>
+          <td>{{ i.calorias100 }} kcal</td>
+          <td>{{ i.carbos100 }} g</td>
+          <td>{{ i.grasas100 }} g</td>
+          <td>{{ i.proteinas100 }} g</td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/ingredientes/edits', i.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(i.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

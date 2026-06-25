@@ -1,34 +1,69 @@
-<div class="container">
-  <h2 style="text-align: center; margin: 3%;">Lista de Ejercicios</h2>
+<div class="kh-breadcrumb">App / <span>Ejercicios</span></div>
 
-  <div style="text-align: center; margin: 3%;">
-    <table class="exercise-table">
-      <thead>
+<div class="kh-page-head">
+  <div>
+    <h2>Ejercicios</h2>
+    <p>Catálogo de ejercicios del sistema</p>
+  </div>
+  <button class="kh-btn-new" [routerLink]="['/ejercicios/nuevo']">
+    + Nuevo ejercicio
+  </button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ ejercicios.length }}</p>
+    <p class="tag">ejercicios registrados</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar ejercicio..."
+         [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Grupo Muscular</th>
+        <th>Duración (min)</th>
+        <th>MET</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (ejerciciosFiltrados().length === 0) {
         <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Grupo muscular</th>
-          <th>Duración</th>
-          <th>MET</th>
-          <th>Eliminar</th>
-          <th>Actualizar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ejercicio of ejercicios">
-          <td>{{ ejercicio.id }}</td>
-          <td>{{ ejercicio.nombre }}</td>
-          <td>{{ ejercicio.grupoMuscular }}</td>
-          <td>{{ ejercicio.duracionMin }}</td>
-          <td>{{ ejercicio.metValor }}</td>
-          <td>
-            <button type="button" (click)="eliminar(ejercicio.id)">Eliminar</button>
-          </td>
-          <td>
-            <button type="button" [routerLink]="['/ejercicios/edits', ejercicio.id]">Editar</button>
+          <td colspan="6">
+            <div class="kh-empty">
+              <p class="ico">💪</p>
+              <p>No hay ejercicios registrados aún.</p>
+            </div>
           </td>
         </tr>
-      </tbody>
-    </table>
+      }
+      @for (e of ejerciciosFiltrados(); track e.id) {
+        <tr>
+          <td>{{ e.id }}</td>
+          <td><strong>{{ e.nombre }}</strong></td>
+          <td><span class="kh-badge kh-badge-green">{{ e.grupoMuscular }}</span></td>
+          <td>{{ e.duracionMin }} min</td>
+          <td>{{ e.metValor }}</td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/ejercicios/edits', e.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(e.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <div class="kh-pagination">
+    <span>{{ ejerciciosFiltrados().length }} resultado(s)</span>
   </div>
 </div>

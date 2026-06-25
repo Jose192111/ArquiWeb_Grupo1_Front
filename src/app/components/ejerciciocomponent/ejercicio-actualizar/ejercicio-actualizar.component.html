@@ -1,38 +1,60 @@
-<div class="container">
-  <div style="text-align: center; margin: 3%;">
-    <h2>Actualizar Ejercicio</h2>
-  </div>
+<div class="kh-breadcrumb">App / <a routerLink="/ejercicios/listas">Ejercicios</a> / <span>Editar</span></div>
 
-  <div style="text-align: center; margin: 3%;">
-    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <label>
-        <span>Código</span>
-        <input type="text" formControlName="codigo" readonly>
-      </label>
-
-      <label>
-        <span>Nombre</span>
-        <input type="text" formControlName="nombre">
-      </label>
-
-      <label>
-        <span>Grupo muscular</span>
-        <input type="text" formControlName="grupoMuscular">
-      </label>
-
-      <label>
-        <span>Duración mínima</span>
-        <input type="number" formControlName="duracionMin">
-      </label>
-
-      <label>
-        <span>Valor MET</span>
-        <input type="number" formControlName="metValor" step="0.1">
-      </label>
-
-      <div>
-        <button type="submit">Actualizar</button>
-      </div>
-    </form>
+<div class="kh-page-head">
+  <div>
+    <h2>Editar Ejercicio</h2>
+    <p>Modifica los datos del ejercicio seleccionado</p>
   </div>
 </div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+
+      <div class="kh-form-field">
+        <label>ID</label>
+        <input class="kh-input readonly" formControlName="codigo" readonly />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Nombre del ejercicio <span class="req">*</span></label>
+        <input class="kh-input" formControlName="nombre"
+               placeholder="Ej. Sentadillas con salto" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Grupo muscular <span class="req">*</span></label>
+        <select class="kh-input" formControlName="grupoMuscular">
+          <option value="">Seleccionar...</option>
+          <option>Piernas</option>
+          <option>Pecho</option>
+          <option>Espalda</option>
+          <option>Core</option>
+          <option>Hombros</option>
+          <option>Brazos</option>
+          <option>Cardio</option>
+        </select>
+      </div>
+
+      <div class="kh-form-field">
+        <label>Duración mínima (min) <span class="req">*</span></label>
+        <input class="kh-input" type="number" formControlName="duracionMin" min="1" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Valor MET <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="0.1" formControlName="metValor" />
+      </div>
+
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/ejercicios/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Actualizar ejercicio
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,83 @@
+<div class="kh-breadcrumb">App / <span>Recetas</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Recetas</h2>
+    <p>Catálogo de recetas y su información de preparación</p>
+  </div>
+  <button class="kh-btn-new" [routerLink]="['/recetas/nuevo']">
+    + Nueva receta
+  </button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ recetas.length }}</p>
+    <p class="tag">recetas registradas</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar receta..." [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Autor</th>
+        <th>Tiempo</th>
+        <th>Dificultad</th>
+        <th>Estado</th>
+        <th>Actualizada</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (recetasFiltradas().length === 0) {
+        <tr>
+          <td colspan="8">
+            <div class="kh-empty">
+              <p class="ico">🥗</p>
+              <p>No hay recetas registradas o que coincidan con la búsqueda.</p>
+            </div>
+          </td>
+        </tr>
+      }
+      @for (r of recetasFiltradas(); track r.id) {
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>
+            <strong>{{ r.title }}</strong><br>
+            <span style="font-size: 0.8em; color: #6b7280;">{{ r.description }}</span>
+          </td>
+          <td>Autor #{{ r.idAutor || 'Sistema' }}</td>
+          <td>{{ r.prepTimeMinutes }} min</td>
+          <td>
+            <span class="kh-badge" 
+                  [ngClass]="{'kh-badge-green': r.difficulty === 'Fácil', 'kh-badge-yellow': r.difficulty === 'Media', 'kh-badge-red': r.difficulty === 'Difícil'}">
+              {{ r.difficulty }}
+            </span>
+          </td>
+          <td>
+            @if(r.published) {
+              <span style="color: #0f766e; font-weight: 600;">✓ Publicada</span>
+            } @else {
+              <span style="color: #6b7280;">Borrador</span>
+            }
+          </td>
+          <td style="color: #6b7280; font-size: 0.9em;">{{ r.ultimaActualizacion | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/recetas/edits', r.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(r.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

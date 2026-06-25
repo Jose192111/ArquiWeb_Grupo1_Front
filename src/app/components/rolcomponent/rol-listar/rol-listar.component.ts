@@ -14,23 +14,15 @@ import { RolService } from '../../../services/rol.service';
 export class RolListarComponent implements OnInit {
   roles: Rol[] = [];
 
-  constructor(private rolService: RolService) { }
+  constructor(private rolService: RolService) {}
 
-  ngOnInit(): void {
-    this.cargarRoles();
-  }
+  ngOnInit(): void { this.cargarRoles(); }
 
   cargarRoles(): void {
-    this.rolService.list().subscribe({
-      next: (data) => {
-        this.roles = data;
-      },
-    });
+    this.rolService.list().subscribe({ next: (data) => (this.roles = data) });
   }
 
   eliminar(id: number): void {
-    this.rolService.delete(id).subscribe({
-      next: () => this.cargarRoles(),
-    });
+    this.rolService.delete(id).subscribe({ next: () => this.cargarRoles() });
   }
 }

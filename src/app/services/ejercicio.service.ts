@@ -22,14 +22,14 @@ export class EjercicioService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.url}/eliminar/${id}`, { responseType: 'text' });
   }
 
   listId(id: number) {
-    return this.http.get<Ejercicio>(`${this.url}/${id}`);
+    return this.http.get<Ejercicio>(`${this.url}/detalle/${id}`);
   }
 
   update(ejercicio: Ejercicio) {
-    return this.http.put(`${this.url}/actualiza`, ejercicio, { responseType: 'text' });
+    return this.http.put(`${this.url}/actualizar/${ejercicio.id}`, ejercicio, { responseType: 'text' });
   }
 }

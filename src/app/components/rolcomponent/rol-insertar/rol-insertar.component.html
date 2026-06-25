@@ -1,18 +1,22 @@
 <div class="container">
-  <div style="text-align: center; margin: 3%;">
+  <div style="text-align: center; margin: 3%">
     <h2>Registrar Rol</h2>
   </div>
 
-  <div style="text-align: center; margin: 3%;">
-    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <label>
-        <span>Nombre</span>
-        <input type="text" formControlName="nombre">
-      </label>
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Rol</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ej. Administrador" />
+      </mat-form-field>
 
-      <div>
-        <button type="submit">Registrar</button>
+      <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
+          Registrar Rol
+        </button>
       </div>
+
     </form>
   </div>
 </div>
