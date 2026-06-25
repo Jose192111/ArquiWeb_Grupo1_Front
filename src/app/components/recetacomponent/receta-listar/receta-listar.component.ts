@@ -1,34 +1,48 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { RecipeService } from '../../../services/recipe.service';
 import { Recipe } from '../../../models/receta.model';
 
 @Component({
   selector: 'app-receta-listar',
-  imports: [CommonModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './receta-listar.component.html',
   styleUrl: './receta-listar.component.css'
 })
 export class RecetaListarComponent implements OnInit {
   recetas: Recipe[] = [];
+  filtro = '';
 
-  constructor(private RecetaService: RecipeService) { }
+  constructor(private recetaService: RecipeService) { }
 
   ngOnInit(): void {
     this.cargarRecetas();
   }
 
   cargarRecetas(): void {
-    this.RecetaService.list().subscribe({
+    this.recetaService.list().subscribe({
       next: (data) => {
-        this.recetas = data;
+        // Ordenamos por ID ascendente para evitar que brinquen
+        this.recetas = data.sort((a, b) => a.id - b.id);
       },
     });
   }
 
+  recetasFiltradas(): Recipe[] {
+    if (!this.filtro.trim()) return this.recetas;
+    const term = this.filtro.toLowerCase();
+    return this.recetas.filter(r =>
+      r.title.toLowerCase().includes(term) ||
+      r.difficulty.toLowerCase().includes(term)
+    );
+  }
+
   eliminar(id: number): void {
-    this.RecetaService.delete(id).subscribe({
+    if (!confirm('¿Seguro que deseas eliminar esta receta?')) return;
+    this.recetaService.delete(id).subscribe({
       next: () => this.cargarRecetas(),
     });
   }

@@ -70,6 +70,7 @@ export const routes: Routes = [
   // P2 — Ingredientes
   {
     path: 'ingredientes',
+        canActivate: [authGuard],
     component: IngredientecomponentComponent,
     children: [
       { path: 'listas', component: IngredienteListarComponent },
@@ -82,6 +83,7 @@ export const routes: Routes = [
   // P2 — Recetas
   {
     path: 'recetas',
+        canActivate: [authGuard],
     component: RecetacomponentComponent,
     children: [
       { path: 'listas', component: RecetaListarComponent },
