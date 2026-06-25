@@ -1,10 +1,8 @@
-import { Usuario } from './usuario.model';
-
 export interface Recipe {
   id: number;
   title: string;
   description: string;
-  idAutor: Usuario;
+  idAutor: number; 
   prepTimeMinutes: number;
   difficulty: string;
   published: boolean;

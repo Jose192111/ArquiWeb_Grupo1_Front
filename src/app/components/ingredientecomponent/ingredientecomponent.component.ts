@@ -14,3 +14,4 @@ import { SidebarComponent } from '../sidebarcomponent/sidebar.component';
   `,
 })
 export class IngredientecomponentComponent {}
+

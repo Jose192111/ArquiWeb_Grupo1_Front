@@ -1,40 +1,26 @@
-import { Routes } from '@angular/router';
-import { Homecomponent } from './components/homecomponent/homecomponent';
-import { Logincomponent } from './components/logincomponent/logincomponent';
-import { Registrocomponent } from './components/registrocomponent/registrocomponent';
-import { authGuard } from './guards/auth.guard';
-
-// P4 — Ejercicios
-import { EjerciciocomponentComponent } from './components/ejerciciocomponent/ejerciciocomponent.component';
-import { EjercicioListarComponent } from './components/ejerciciocomponent/ejercicio-listar/ejercicio-listar.component';
-import { EjercicioInsertarComponent } from './components/ejerciciocomponent/ejercicio-insertar/ejercicio-insertar.component';
-import { EjercicioActualizarComponent } from './components/ejerciciocomponent/ejercicio-actualizar/ejercicio-actualizar.component';
-
-// P4 — Planes Maestros
-import { PlanmaestrocomponentComponent } from './components/planmaestrocomponent/planmaestrocomponent.component';
-import { PlanMaestroListarComponent } from './components/planmaestrocomponent/plan-maestro-listar/plan-maestro-listar.component';
-import { PlanMaestroInsertarComponent } from './components/planmaestrocomponent/plan-maestro-insertar/plan-maestro-insertar.component';
-import { PlanMaestroActualizarComponent } from './components/planmaestrocomponent/plan-maestro-actualizar/plan-maestro-actualizar.component';
-
-// P1 — Roles
-import { RolcomponentComponent } from './components/rolcomponent/rolcomponent.component';
-import { RolListarComponent } from './components/rolcomponent/rol-listar/rol-listar.component';
-import { RolInsertarComponent } from './components/rolcomponent/rol-insertar/rol-insertar.component';
-import { RolActualizarComponent } from './components/rolcomponent/rol-actualizar/rol-actualizar.component';
-
-// P2 — Ingredientes
-import { IngredientecomponentComponent } from './components/ingredientecomponent/ingredientecomponent.component';
-import { IngredienteListarComponent } from './components/ingredientecomponent/ingrediente-listar/ingrediente-listar.component';
-
-// P2 — Recetas
-import { RecetacomponentComponent } from './components/recetacomponent/recetacomponent.component';
-import { RecetaListarComponent } from './components/recetacomponent/receta-listar/receta-listar.component';
-
-// P1 — Etiquetas
-import { EtiquetacomponentComponent } from './components/etiquetacomponent/etiquetacomponent.component';
-import { EtiquetaListarComponent } from './components/etiquetacomponent/etiqueta-listar/etiqueta-listar.component';
-import { EtiquetaInsertarComponent } from './components/etiquetacomponent/etiqueta-insertar/etiqueta-insertar.component';
-import { EtiquetaActualizarComponent } from './components/etiquetacomponent/etiqueta-actualizar/etiqueta-actualizar.component';
+import { Routes } from "@angular/router";
+import { Homecomponent } from "./components/homecomponent/homecomponent";
+import { Logincomponent } from "./components/logincomponent/logincomponent";
+import { Registrocomponent } from "./components/registrocomponent/registrocomponent";
+import { EjerciciocomponentComponent } from "./components/ejerciciocomponent/ejerciciocomponent.component";
+import { authGuard } from "./guards/auth.guard";
+import { EjercicioListarComponent } from "./components/ejerciciocomponent/ejercicio-listar/ejercicio-listar.component";
+import { EjercicioInsertarComponent } from "./components/ejerciciocomponent/ejercicio-insertar/ejercicio-insertar.component";
+import { EjercicioActualizarComponent } from "./components/ejerciciocomponent/ejercicio-actualizar/ejercicio-actualizar.component";
+import { PlanmaestrocomponentComponent } from "./components/planmaestrocomponent/planmaestrocomponent.component";
+import { PlanMaestroListarComponent } from "./components/planmaestrocomponent/plan-maestro-listar/plan-maestro-listar.component";
+import { PlanMaestroInsertarComponent } from "./components/planmaestrocomponent/plan-maestro-insertar/plan-maestro-insertar.component";
+import { PlanMaestroActualizarComponent } from "./components/planmaestrocomponent/plan-maestro-actualizar/plan-maestro-actualizar.component";
+import { RolActualizarComponent, RolcomponentComponent, RolInsertarComponent, RolListarComponent } from "./components/rolcomponent";
+import { IngredientecomponentComponent } from "./components/ingredientecomponent/ingredientecomponent.component";
+import { IngredienteListarComponent } from "./components/ingredientecomponent/ingrediente-listar/ingrediente-listar.component";
+import { RecetacomponentComponent } from "./components/recetacomponent/recetacomponent.component";
+import { RecetaListarComponent } from "./components/recetacomponent/receta-listar/receta-listar.component";
+import { EtiquetaActualizarComponent, EtiquetacomponentComponent, EtiquetaInsertarComponent, EtiquetaListarComponent } from "./components/etiquetacomponent";
+import { IngredienteInsertarComponent } from "./components/ingredientecomponent/ingrediente-insertar/ingrediente-insertar.component";
+import { IngredienteActualizarComponent } from "./components/ingredientecomponent/ingrediente-actualizar/ingrediente-actualizar.component";
+import { RecetaInsertarComponent } from "./components/recetacomponent/receta-insertar/receta-insertar.component";
+import { RecetaActualizarComponent } from "./components/recetacomponent/receta-actualizar/receta-actualizar.component";
 
 export const routes: Routes = [
   // Públicas
@@ -84,10 +70,12 @@ export const routes: Routes = [
   // P2 — Ingredientes
   {
     path: 'ingredientes',
+        canActivate: [authGuard],
     component: IngredientecomponentComponent,
-    canActivate: [authGuard],
     children: [
       { path: 'listas', component: IngredienteListarComponent },
+      { path: 'nuevo', component: IngredienteInsertarComponent },
+      { path: 'edits/:id', component: IngredienteActualizarComponent },
       { path: '', redirectTo: 'listas', pathMatch: 'full' },
     ],
   },
@@ -95,10 +83,12 @@ export const routes: Routes = [
   // P2 — Recetas
   {
     path: 'recetas',
+        canActivate: [authGuard],
     component: RecetacomponentComponent,
-    canActivate: [authGuard],
     children: [
       { path: 'listas', component: RecetaListarComponent },
+      { path: 'nuevo', component: RecetaInsertarComponent },
+      { path: 'edits/:id', component: RecetaActualizarComponent },
       { path: '', redirectTo: 'listas', pathMatch: 'full' },
     ],
   },

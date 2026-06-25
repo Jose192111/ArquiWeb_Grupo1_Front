@@ -9,16 +9,17 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class IngredienteService {
-  private url = `${base_url}/api-ingredientes`;
+  
+  private url = `${base_url}/ingredientes`;
 
   constructor(private http: HttpClient) { }
 
   list() {
-    return this.http.get<Ingrediente[]>(`${this.url}/lista`);
+    return this.http.get<Ingrediente[]>(this.url);
   }
 
   insert(ingrediente: Ingrediente) {
-    return this.http.post(`${this.url}/nuevo`, ingrediente);
+    return this.http.post(this.url, ingrediente);
   }
 
   delete(id: number) {
@@ -30,6 +31,6 @@ export class IngredienteService {
   }
 
   update(ingrediente: Ingrediente) {
-    return this.http.put(`${this.url}/actualiza`, ingrediente, { responseType: 'text' });
+    return this.http.put(`${this.url}/${ingrediente.id}`, ingrediente, { responseType: 'text' });
   }
 }

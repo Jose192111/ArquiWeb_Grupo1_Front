@@ -1,0 +1,63 @@
+<div class="kh-breadcrumb">App / <a routerLink="/recetas/listas">Recetas</a> / <span>Nueva</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Nueva Receta</h2>
+    <p>Registra una nueva creación culinaria</p>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+
+      <div class="kh-form-field full">
+        <label>Nombre de la Receta <span class="req">*</span></label>
+        <input class="kh-input" formControlName="title" placeholder="Ej. Ensalada César" />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Descripción breve <span class="req">*</span></label>
+        <input class="kh-input" formControlName="description" placeholder="Ej. Deliciosa ensalada con crutones y pollo" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>ID del Autor <span class="req">*</span></label>
+        <input class="kh-input" type="number" formControlName="idAutor" placeholder="Ej. 1" min="1"/>
+      </div>
+
+      <div class="kh-form-field">
+        <label>Tiempo de Preparación (min) <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="1" formControlName="prepTimeMinutes" placeholder="Ej. 30" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Dificultad <span class="req">*</span></label>
+        <select class="kh-input" formControlName="difficulty">
+          <option value="">Seleccionar...</option>
+          <option value="Fácil">Fácil</option>
+          <option value="Media">Media</option>
+          <option value="Difícil">Difícil</option>
+        </select>
+      </div>
+
+      <div class="kh-form-field">
+        <label>Estado de publicación</label>
+        <div style="display: flex; align-items: center; height: 100%; gap: 10px;">
+          <input type="checkbox" formControlName="published" style="width: 20px; height: 20px; accent-color: #0f766e;" />
+          <span>Marcar como publicada</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/recetas/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Guardar receta
+      </button>
+    </div>
+  </div>
+</form>

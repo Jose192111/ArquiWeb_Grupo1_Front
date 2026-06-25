@@ -1,0 +1,65 @@
+<div class="kh-breadcrumb">App / <a routerLink="/ingredientes/listas">Ingredientes</a> / <span>Nuevo</span></div>
+
+<div class="kh-page-head">
+  <div>
+    <h2>Nuevo Ingrediente</h2>
+    <p>Añade un nuevo insumo</p>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+
+      <div class="kh-form-field full">
+        <label>Nombre del ingrediente <span class="req">*</span></label>
+        <input class="kh-input" formControlName="nombre" placeholder="Ej. Pechuga de Pollo" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Unidad de medida <span class="req">*</span></label>
+        <select class="kh-input" formControlName="unidadMedida">
+          <option value="">Seleccionar...</option>
+          <option value="g">Gramos (g)</option>
+          <option value="ml">Mililitros (ml)</option>
+          <option value="und">Unidad (und)</option>
+        </select>
+      </div>
+
+      <div class="kh-form-field">
+        <label>ID de Etiqueta <span class="req">*</span></label>
+        <input class="kh-input" type="number" formControlName="idEtiqueta" placeholder="Ej. 1" min="1"/>
+      </div>
+
+      <div class="kh-form-field">
+        <label>Calorías (por 100g) <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="0.1" formControlName="calorias100" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Proteínas (por 100g) <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="0.1" formControlName="proteinas100" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Carbohidratos (por 100g) <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="0.1" formControlName="carbos100" />
+      </div>
+
+      <div class="kh-form-field">
+        <label>Grasas (por 100g) <span class="req">*</span></label>
+        <input class="kh-input" type="number" step="0.1" formControlName="grasas100" />
+      </div>
+
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/ingredientes/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Guardar ingrediente
+      </button>
+    </div>
+  </div>
+</form>
