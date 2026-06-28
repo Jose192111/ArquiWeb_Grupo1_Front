@@ -21,6 +21,7 @@ import { IngredienteInsertarComponent } from "./components/ingredientecomponent/
 import { IngredienteActualizarComponent } from "./components/ingredientecomponent/ingrediente-actualizar/ingrediente-actualizar.component";
 import { RecetaInsertarComponent } from "./components/recetacomponent/receta-insertar/receta-insertar.component";
 import { RecetaActualizarComponent } from "./components/recetacomponent/receta-actualizar/receta-actualizar.component";
+import { RecetaDetallesComponent } from "./components/recetadetallecomponent/recetadetallecomponent.component";
 
 export const routes: Routes = [
   // Públicas
@@ -89,9 +90,12 @@ export const routes: Routes = [
       { path: 'listas', component: RecetaListarComponent },
       { path: 'nuevo', component: RecetaInsertarComponent },
       { path: 'edits/:id', component: RecetaActualizarComponent },
+      { path: 'gestionar/:id', component: RecetaDetallesComponent },
       { path: '', redirectTo: 'listas', pathMatch: 'full' },
     ],
   },
+
+  
 
   // P1 — Etiquetas
   {

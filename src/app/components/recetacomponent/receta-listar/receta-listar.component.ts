@@ -25,7 +25,6 @@ export class RecetaListarComponent implements OnInit {
   cargarRecetas(): void {
     this.recetaService.list().subscribe({
       next: (data) => {
-        // Ordenamos por ID ascendente para evitar que brinquen
         this.recetas = data.sort((a, b) => a.id - b.id);
       },
     });

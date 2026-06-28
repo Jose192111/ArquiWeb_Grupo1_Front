@@ -54,7 +54,7 @@
             <strong>{{ r.title }}</strong><br>
             <span style="font-size: 0.8em; color: #6b7280;">{{ r.description }}</span>
           </td>
-          <td>Autor #{{ r.idAutor || 'Sistema' }}</td>
+          <td>{{ r.nombreAutor || 'Autor #' + r.idAutor }}</td>
           <td>{{ r.prepTimeMinutes }} min</td>
           <td>
             <span class="kh-badge" 
@@ -72,6 +72,10 @@
           <td style="color: #6b7280; font-size: 0.9em;">{{ r.ultimaActualizacion | date:'dd/MM/yyyy' }}</td>
           <td>
             <div class="kh-actions">
+              <button class="kh-btn-edit" style="background: var(--kh-200); border-color: var(--kh-500); color: var(--kh-900);" 
+                      [routerLink]="['/recetas/gestionar', r.id]">
+                ⚙️ Detalles
+              </button>
               <button class="kh-btn-edit" [routerLink]="['/recetas/edits', r.id]">✏️ Editar</button>
               <button class="kh-btn-del" (click)="eliminar(r.id)">🗑 Eliminar</button>
             </div>
