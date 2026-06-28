@@ -10,4 +10,5 @@ export interface Recipe {
   published: boolean;
   ultimaActualizacion: Date;
   detalles?: any[];
+  nombreAutor?: string;
 }
