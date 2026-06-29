@@ -1,27 +1,33 @@
-<div class="container">
-  <div style="text-align: center; margin: 3%">
-    <h2>Registrar Etiqueta</h2>
-  </div>
+<div class="kh-breadcrumb">App / <a routerLink="/etiquetas/listas">Etiquetas</a> / <span>Nuevo</span></div>
 
-  <div style="text-align: center; margin: 3%">
-    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
-      
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nombre de la Etiqueta</mat-label>
-        <input matInput formControlName="nombre" placeholder="Ej. Principiante" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Grupo</mat-label>
-        <input matInput formControlName="grupo" placeholder="Ej. Dificultad" />
-      </mat-form-field>
-
-      <div class="button-container">
-        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
-          Registrar Etiqueta
-        </button>
-      </div>
-
-    </form>
+<div class="kh-page-head">
+  <div>
+    <h2>Nueva Etiqueta</h2>
+    <p>Crea una nueva etiqueta para clasificar contenido</p>
   </div>
 </div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+      <div class="kh-form-field full">
+        <label>Nombre de la etiqueta <span class="req">*</span></label>
+        <input class="kh-input" formControlName="nombre" placeholder="Ej. Principiante" />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Grupo <span class="req">*</span></label>
+        <input class="kh-input" formControlName="grupo" placeholder="Ej. Dificultad" />
+      </div>
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/etiquetas/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Guardar etiqueta
+      </button>
+    </div>
+  </div>
+</form>

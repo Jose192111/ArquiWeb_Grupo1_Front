@@ -1,30 +1,61 @@
-<div class="container">
-  <h2 style="text-align: center; margin: 3%;">Lista de Etiquetas</h2>
+<div class="kh-breadcrumb">App / <span>Etiquetas</span></div>
 
-  <div style="text-align: center; margin: 3%;">
-    <table class="entity-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Grupo</th>
-          <th>Eliminar</th>
-          <th>Actualizar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let etiqueta of etiquetas">
-          <td>{{ etiqueta.id }}</td>
-          <td>{{ etiqueta.nombre }}</td>
-          <td>{{ etiqueta.grupo }}</td>
-          <td>
-            <button type="button" (click)="eliminar(etiqueta.id)">Eliminar</button>
-          </td>
-          <td>
-            <button type="button" [routerLink]="['/etiquetas/edits', etiqueta.id]">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="kh-page-head">
+  <div>
+    <h2>Etiquetas</h2>
+    <p>Administración de etiquetas del sistema</p>
   </div>
+  <button class="kh-btn-new" [routerLink]="['/etiquetas/nuevo']">
+    + Nueva etiqueta
+  </button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ etiquetas.length }}</p>
+    <p class="tag">etiquetas registradas</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar etiqueta..." [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Grupo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (etiquetasFiltradas().length === 0) {
+        <tr>
+          <td colspan="4">
+            <div class="kh-empty">
+              <p class="ico">🏷️</p>
+              <p>No hay etiquetas registradas o que coincidan con la búsqueda.</p>
+            </div>
+          </td>
+        </tr>
+      }
+      @for (etiqueta of etiquetasFiltradas(); track etiqueta.id) {
+        <tr>
+          <td>{{ etiqueta.id }}</td>
+          <td><strong>{{ etiqueta.nombre }}</strong></td>
+          <td><span class="kh-badge">{{ etiqueta.grupo }}</span></td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/etiquetas/edits', etiqueta.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(etiqueta.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>

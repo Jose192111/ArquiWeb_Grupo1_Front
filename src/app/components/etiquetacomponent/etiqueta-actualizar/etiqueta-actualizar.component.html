@@ -1,28 +1,38 @@
-<div class="container">
-  <div style="text-align: center; margin: 3%;">
-    <h2>Actualizar Etiqueta</h2>
-  </div>
+<div class="kh-breadcrumb">App / <a routerLink="/etiquetas/listas">Etiquetas</a> / <span>Editar</span></div>
 
-  <div style="text-align: center; margin: 3%;">
-    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <label>
-        <span>Código</span>
-        <input type="text" formControlName="codigo" readonly>
-      </label>
-
-      <label>
-        <span>Nombre</span>
-        <input type="text" formControlName="nombre">
-      </label>
-
-      <label>
-        <span>Grupo</span>
-        <input type="text" formControlName="grupo">
-      </label>
-
-      <div>
-        <button type="submit">Actualizar</button>
-      </div>
-    </form>
+<div class="kh-page-head">
+  <div>
+    <h2>Editar Etiqueta</h2>
+    <p>Modifica el nombre y grupo de la etiqueta seleccionada</p>
   </div>
 </div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+      <div class="kh-form-field">
+        <label>ID</label>
+        <input class="kh-input readonly" formControlName="codigo" readonly />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Nombre de la etiqueta <span class="req">*</span></label>
+        <input class="kh-input" formControlName="nombre" />
+      </div>
+
+      <div class="kh-form-field full">
+        <label>Grupo <span class="req">*</span></label>
+        <input class="kh-input" formControlName="grupo" />
+      </div>
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/etiquetas/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Actualizar etiqueta
+      </button>
+    </div>
+  </div>
+</form>
