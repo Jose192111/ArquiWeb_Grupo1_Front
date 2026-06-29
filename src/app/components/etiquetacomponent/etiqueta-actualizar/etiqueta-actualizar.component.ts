@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Etiqueta } from '../../../models/etiqueta.model';
 import { EtiquetaService } from '../../../services/etiqueta.service';
@@ -8,7 +8,7 @@ import { EtiquetaService } from '../../../services/etiqueta.service';
 @Component({
   selector: 'app-etiqueta-actualizar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './etiqueta-actualizar.component.html',
   styleUrl: './etiqueta-actualizar.component.css',
 })

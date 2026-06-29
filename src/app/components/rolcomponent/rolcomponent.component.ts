@@ -6,11 +6,6 @@ import { SidebarComponent } from '../sidebarcomponent/sidebar.component';
   selector: 'app-rolcomponent',
   standalone: true,
   imports: [RouterOutlet, SidebarComponent],
-  template: `
-    <div class="app-shell">
-      <app-sidebar></app-sidebar>
-      <div class="shell-main"><router-outlet></router-outlet></div>
-    </div>
-  `,
+  templateUrl: './rolcomponent.component.html',
 })
 export class RolcomponentComponent {}

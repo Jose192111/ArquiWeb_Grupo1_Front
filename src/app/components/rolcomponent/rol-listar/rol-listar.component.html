@@ -1,28 +1,59 @@
-<div class="container">
-  <h2 style="text-align: center; margin: 3%;">Lista de Roles</h2>
+<div class="kh-breadcrumb">App / <span>Roles</span></div>
 
-  <div style="text-align: center; margin: 3%;">
-    <table class="entity-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Eliminar</th>
-          <th>Actualizar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let rol of roles">
-          <td>{{ rol.id }}</td>
-          <td>{{ rol.nombre }}</td>
-          <td>
-            <button type="button" (click)="eliminar(rol.id)">Eliminar</button>
-          </td>
-          <td>
-            <button type="button" [routerLink]="['/roles/edits', rol.id]">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="kh-page-head">
+  <div>
+    <h2>Roles</h2>
+    <p>Administración de roles del sistema</p>
   </div>
+  <button class="kh-btn-new" [routerLink]="['/roles/nuevo']">
+    + Nuevo rol
+  </button>
+</div>
+
+<div class="kh-stats">
+  <div class="kh-stat">
+    <p class="label">Total</p>
+    <p class="value">{{ roles.length }}</p>
+    <p class="tag">roles registrados</p>
+  </div>
+</div>
+
+<div class="kh-search">
+  <input class="kh-search-input" type="text" placeholder="🔍  Buscar rol..." [(ngModel)]="filtro" />
+</div>
+
+<div class="kh-table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (rolesFiltrados().length === 0) {
+        <tr>
+          <td colspan="3">
+            <div class="kh-empty">
+              <p class="ico">🛡️</p>
+              <p>No hay roles registrados o que coincidan con la búsqueda.</p>
+            </div>
+          </td>
+        </tr>
+      }
+      @for (rol of rolesFiltrados(); track rol.id) {
+        <tr>
+          <td>{{ rol.id }}</td>
+          <td><strong>{{ rol.nombre }}</strong></td>
+          <td>
+            <div class="kh-actions">
+              <button class="kh-btn-edit" [routerLink]="['/roles/edits', rol.id]">✏️ Editar</button>
+              <button class="kh-btn-del" (click)="eliminar(rol.id)">🗑 Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>

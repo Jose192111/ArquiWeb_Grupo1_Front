@@ -1,56 +1,104 @@
-.container {
-  padding: 20px;
+.kh-breadcrumb {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1rem;
 }
 
-h2 {
-  color: #333;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.kh-breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
 }
 
-/* Diseño tipo tarjeta para el formulario */
-.example-form {
+.kh-breadcrumb span {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.kh-page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.kh-page-head h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0f172a;
+}
+
+.kh-page-head p {
+  margin: 0.2rem 0 0;
+  color: #64748b;
+}
+
+.kh-form-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.kh-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.kh-form-field {
   display: flex;
   flex-direction: column;
-  gap: 15px; 
-  max-width: 450px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 0.4rem;
 }
 
-/* Que el input ocupe todo el ancho de la tarjeta */
-.full-width {
+.kh-form-field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 600;
+  color: #334155;
+}
+
+.req {
+  color: #dc2626;
+}
+
+.kh-input {
   width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #dbe3ec;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
 }
 
-.button-container {
-  margin-top: 10px;
+.kh-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-/* Estilo de tu botón principal */
-.btn-registrar {
-  width: 100%;
-  padding: 24px 0 !important; 
-  font-size: 1rem !important;
-  font-weight: bold;
-  letter-spacing: 1px;
-  background-color: #fb0800 !important;
-  color: white !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.kh-btn-cancel,
+.kh-btn-save {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-/* Tu hover verde */
-.btn-registrar:hover {
-  background-color: rgb(106, 235, 157) !important;
-  color: #0f172a !important;
+.kh-btn-cancel {
+  background: #f1f5f9;
+  color: #334155;
 }
 
-/* Botón atenuado si el formulario es inválido */
-.btn-registrar:disabled {
-  background-color: #e0e0e0 !important;
-  color: #9e9e9e !important;
+.kh-btn-save {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.kh-btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

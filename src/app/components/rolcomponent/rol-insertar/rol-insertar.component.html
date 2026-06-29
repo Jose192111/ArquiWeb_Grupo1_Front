@@ -1,22 +1,28 @@
-<div class="container">
-  <div style="text-align: center; margin: 3%">
-    <h2>Registrar Rol</h2>
-  </div>
+<div class="kh-breadcrumb">App / <a routerLink="/roles/listas">Roles</a> / <span>Nuevo</span></div>
 
-  <div style="text-align: center; margin: 3%">
-    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
-      
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nombre del Rol</mat-label>
-        <input matInput formControlName="nombre" placeholder="Ej. Administrador" />
-      </mat-form-field>
-
-      <div class="button-container">
-        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-registrar">
-          Registrar Rol
-        </button>
-      </div>
-
-    </form>
+<div class="kh-page-head">
+  <div>
+    <h2>Nuevo Rol</h2>
+    <p>Crea un nuevo rol para el sistema</p>
   </div>
 </div>
+
+<form [formGroup]="form" (ngSubmit)="aceptar()">
+  <div class="kh-form-card">
+    <div class="kh-form-grid">
+      <div class="kh-form-field full">
+        <label>Nombre del rol <span class="req">*</span></label>
+        <input class="kh-input" formControlName="nombre" placeholder="Ej. Administrador" />
+      </div>
+    </div>
+
+    <div class="kh-form-actions">
+      <button type="button" class="kh-btn-cancel" routerLink="/roles/listas">
+        Cancelar
+      </button>
+      <button type="submit" class="kh-btn-save" [disabled]="form.invalid">
+        Guardar rol
+      </button>
+    </div>
+  </div>
+</form>
