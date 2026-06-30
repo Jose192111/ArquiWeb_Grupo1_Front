@@ -9,7 +9,7 @@ export class calendarioService {
   private apiUrl = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=1';
   
   // Tu token pegado exactamente
-  private accessToken = 'ya29.a0AT3oNZ8Q_zOc3z2zZnHX9risHzj4ZvrRS90hcYmfmo0UOP2b7ng_FP9lhx1l4_bclLCpgPiS62jxc9xHZHUDzS2qpgKVQerwGRHdaHXz4wM_A2aStSrp0ZQl-F7UBubixwWLpOJK4RconU77FM2ISxKm4k8zVaTtXoTeoT3cblQllFZKN3Ln-72Ba-wMCGKbs7vJFV0aCgYKAX4SARISFQHGX2MirrV1Lx0wtBKXbhwmw_BGPQ0206'; 
+  private accessToken = 'Generar un token de acceso válido y pegarlo aquí'; 
 
   constructor(private http: HttpClient) { }
 
