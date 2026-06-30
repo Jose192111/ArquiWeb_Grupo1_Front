@@ -1,0 +1,59 @@
+<div class="app-shell">
+    <app-sidebar></app-sidebar>
+
+    <div class="shell-main">
+
+        <div class="kh-breadcrumb">App / <span>Agendar</span></div>
+
+        <div class="kh-page-head">
+            <div>
+                <h2>Agendar Cita</h2>
+                <p>Programa una videollamada de 30 minutos con un profesional</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="example-form">
+
+                <div>
+                    <label for="rol" style="font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                        ¿Con quién será la cita?
+                    </label>
+                    <select id="rol" class="full-width" [(ngModel)]="rolSeleccionado">
+                        <option value="Entrenador">Entrenador</option>
+                        <option value="Nutricionista">Nutricionista</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="fechaInicio"
+                        style="font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                        Fecha y hora de la cita:
+                    </label>
+                    <input type="datetime-local" id="fechaInicio" class="full-width" [(ngModel)]="fechaInicio" />
+                </div>
+
+                <div class="button-container">
+                    <button class="btn-registrar" (click)="agendarCita()" [disabled]="!fechaInicio">
+                        AGENDAR Y GENERAR MEET
+                    </button>
+                </div>
+
+                @if (citaAgendada) {
+                <div
+                    style="margin-top: 15px; padding: 15px; border: 1px solid #10b981; background-color: #d1fae5; border-radius: 8px; text-align: center;">
+                    <h3 style="color: #047857; margin-top: 0; margin-bottom: 8px;">¡Cita Confirmada!</h3>
+                    <p style="margin: 0 0 15px 0; color: #065f46;">Estado: <strong>{{ citaAgendada.estado }}</strong>
+                    </p>
+                    <a [href]="citaAgendada.linkMeet" target="_blank"
+                        style="display: inline-block; background-color: #047857; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                        🎥 Entrar a la videollamada
+                    </a>
+                </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -20,18 +20,23 @@
         </button>
         @if (menuAppOpen) {
           <div class="kh-drop-menu">
-            <a class="kh-drop-item" routerLink="/ejercicios/listas" (click)="cerrar()">
-              💪 Ejercicios
-            </a>
-            <a class="kh-drop-item" routerLink="/planes/listas" (click)="cerrar()">
-              📋 Planes Maestros
-            </a>
-            <div class="kh-drop-divider"></div>
+            
             <a class="kh-drop-item" routerLink="/etiquetas/listas" (click)="cerrar()">
               🏷️ Etiquetas
             </a>
             <a class="kh-drop-item" routerLink="/roles/listas" (click)="cerrar()">
               🎭 Roles
+            </a>
+            <a class="kh-drop-item" routerLink="/agendar" (click)="cerrar()">
+              📅 Agendar
+            </a>
+          
+            <div class="kh-drop-divider"></div>
+            <a class="kh-drop-item" routerLink="/ejercicios/listas" (click)="cerrar()">
+              💪 Ejercicios
+            </a>
+            <a class="kh-drop-item" routerLink="/planes/listas" (click)="cerrar()">
+              📋 Planes Maestros
             </a>
             <div class="kh-drop-divider"></div>
             <a class="kh-drop-item" routerLink="/ingredientes/listas" (click)="cerrar()">
@@ -40,6 +45,7 @@
             <a class="kh-drop-item" routerLink="/recetas/listas" (click)="cerrar()">
               🍽️ Recetas
             </a>
+            
           </div>
         }
       </div>
