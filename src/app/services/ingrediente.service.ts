@@ -33,4 +33,8 @@ export class IngredienteService {
   update(ingrediente: Ingrediente) {
     return this.http.put(`${this.url}/${ingrediente.id}`, ingrediente, { responseType: 'text' });
   }
+
+  getReporteUso() {
+    return this.http.get<any[]>(`${this.url}/reporte-ingredientes-top`); 
+  }
 }

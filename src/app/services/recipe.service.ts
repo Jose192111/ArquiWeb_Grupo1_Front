@@ -33,4 +33,9 @@ export class RecipeService {
     // Apunta al ID exacto para el PUT, sin "/actualiza"
     return this.http.put(`${this.url}/${recipe.id}`, recipe, { responseType: 'text' });
   }
+
+  // Agrégalo debajo de tus otros métodos
+  getEstadisticasDificultad() {
+    return this.http.get<any[]>(`${this.url}/estadisticas-dificultad`);
+  }
 }

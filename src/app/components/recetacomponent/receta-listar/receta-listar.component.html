@@ -18,6 +18,23 @@
   </div>
 </div>
 
+@if (hasChartData) {
+  <div class="kh-table-card" style="padding: 1.5rem; margin-bottom: 2rem;">
+    <h3 style="margin-top: 0; color: var(--kh-900);">Recetas por Nivel de Dificultad</h3>
+    
+    <div style="height: 250px; width: 100%;">
+      <canvas baseChart
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="false" 
+        [type]="chartType">
+      </canvas>
+    </div>
+    
+  </div>
+}
+
 <div class="kh-search">
   <input class="kh-search-input" type="text" placeholder="🔍  Buscar receta..." [(ngModel)]="filtro" />
 </div>
